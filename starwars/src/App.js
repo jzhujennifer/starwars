@@ -20,8 +20,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
-  const [url2, setUrl2] = useState("https://swapi.dev/api/planets");
-  const [url3, setUrl3] = useState("https://swapi.dev/api/starships/");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -61,39 +59,6 @@ const App = () => {
     fetchStarships();
   }, [url,query]);
 
-  // useEffect(() => {
-    
-  //   const fetchPlanets = async () => {
-  //     setIsLoading(true);
-  //     const result = await axios(`${url2}${query}`);
-
-  //     console.log(result.data);
-
-  //     setPlanets(result.data.results);
-  //     setData(result.data);
-  //     setIsLoading(false);
-  //   };
-  
-  //   fetchPlanets();
-    
-  // }, [url2, query]);
-  
-  // useEffect(() => {
-   
-  //   const fetchStarships = async () => {
-  //     setIsLoading(true);
-  //     const result = await axios(`${url3}${query}`);
-
-  //     console.log(result.data);
-
-  //     setStarships(result.data.results);
-  //     setData(result.data);
-  //     setIsLoading(false);
-  //   };
-
-  
-  //   fetchStarships();
-  // }, [url3, query]);
 
   const queryFunction = (q) => {
     if (q === "") {
@@ -153,41 +118,4 @@ const App = () => {
 };
 
 export default App;
-
-// const App = () => {
-//  const [people, setPeople] = useState([]);
-//  const [planets, setPlanets] = useState([]);
-//  const [starships, setStarships] = useState([]);
-//  const [loading, setLoading]= useState(true);
-
- 
-//  useEffect(()=>{
-//   const fetchPeople =async () =>{
-//    const result =await axios(`https://swapi.dev/api/people/`)
-//    setPeople(result.data)
-//    setLoading(false)
-//    console.log(result.data)
-
-//   } 
-//   const fetchPlanets =async () =>{
-//     const result =await axios(`https://swapi.dev/api/planets/`)
-//     setPlanets(result.data)
-//     setLoading(false)
-//     console.log(result.data)
- 
-   
-//    } 
-//    const fetchStarships =async () =>{
-//     const result =await axios(`https://swapi.dev/api/starships/`)
-//     setStarships(result.data)
-//     setLoading(false)
-//     console.log(result.data)
- 
-   
-//    } 
-//   fetchPeople();
-//   fetchPlanets();
-//   fetchStarships();
-// },[])
-
 
