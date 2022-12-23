@@ -35,37 +35,9 @@ const App = () => {
       setData(result.data);
       setIsLoading(false);
     };
-    // const fetchPlanets = async () => {
-    //   setIsLoading(true);
-    //   const result =  await axios(`${url2}${query}`);
-
-    //   console.log(result.data);
-
-    //   setPlanets(result.data.results);
-    //   setData(result.data);
-    //   setIsLoading(false);
-    // };
-    // const fetchStarships = async () => {
-    //   setIsLoading(true);
-    //   const result = await axios(`https://swapi.dev/api/starships`);
-
-    //   console.log(result.data);
-
-    //   setStarships(result.data.results);
-    //   setData(result.data);
-    //   setIsLoading(false);
-    // };
-
-    fetchPeople();
-    // fetchPlanets();
-    // fetchStarships();
-  }, [url,query]);
-
-  useEffect(() => {
-    
     const fetchPlanets = async () => {
       setIsLoading(true);
-      const result = await axios(`${url2}${query}`);
+      const result =  await axios(`https://swapi.dev/api/planets`);
 
       console.log(result.data);
 
@@ -73,16 +45,9 @@ const App = () => {
       setData(result.data);
       setIsLoading(false);
     };
-  
-    fetchPlanets();
-    
-  }, [url2, query]);
-  
-  useEffect(() => {
-   
     const fetchStarships = async () => {
       setIsLoading(true);
-      const result = await axios(`${url3}${query}`);
+      const result = await axios(`https://swapi.dev/api/starships`);
 
       console.log(result.data);
 
@@ -91,9 +56,44 @@ const App = () => {
       setIsLoading(false);
     };
 
-  
+    fetchPeople();
+    fetchPlanets();
     fetchStarships();
-  }, [url3, query]);
+  }, [url,query]);
+
+  // useEffect(() => {
+    
+  //   const fetchPlanets = async () => {
+  //     setIsLoading(true);
+  //     const result = await axios(`${url2}${query}`);
+
+  //     console.log(result.data);
+
+  //     setPlanets(result.data.results);
+  //     setData(result.data);
+  //     setIsLoading(false);
+  //   };
+  
+  //   fetchPlanets();
+    
+  // }, [url2, query]);
+  
+  // useEffect(() => {
+   
+  //   const fetchStarships = async () => {
+  //     setIsLoading(true);
+  //     const result = await axios(`${url3}${query}`);
+
+  //     console.log(result.data);
+
+  //     setStarships(result.data.results);
+  //     setData(result.data);
+  //     setIsLoading(false);
+  //   };
+
+  
+  //   fetchStarships();
+  // }, [url3, query]);
 
   const queryFunction = (q) => {
     if (q === "") {
@@ -115,9 +115,9 @@ const App = () => {
     <div className="container">
 
           <Router>
-            <Navbar/>
-           
-            <Switch >
+            <Navbar/>  
+
+            <Switch >             
              <Route   exact path='/'>  
              <Home  />
             </Route>
@@ -128,14 +128,15 @@ const App = () => {
             {data.next && <button onClick={nextHandler}>next</button>}
              {data.previous && <button onClick={previusHandler}>previous</button>}  
              </Route>
+
              <Route   exact path='/planets'> 
-             <Search getQuery={queryFunction} /> 
+             
              <PlanetsGrid isLoading={isLoading} items={planets} />    
              {data.next && <button onClick={nextHandler}>next</button>}
              {data.previous && <button onClick={previusHandler}>previous</button>}  
              </Route> 
+
              <Route   exact path='/starships'> 
-             <Search getQuery={queryFunction} /> 
              <StarshipsGrid isLoading={isLoading} items={starships} />    
              {data.next && <button onClick={nextHandler}>next</button>}
              {data.previous && <button onClick={previusHandler}>previous</button>}  
@@ -190,42 +191,3 @@ export default App;
 // },[])
 
 
-//   return (
-//     // <div className="container">
-//     <>
-//       <Router>
-//         <Navbar/>
-//         <Header />
-//          <Container>
-//           {loading ?(
-//             <Dimmer active inverted>
-//               <Loader inverted>Loading</Loader>
-//             </Dimmer>
-//           ):( 
-//             <Switch>
-//              <Route   exact path='/'>
-//               <Home  />
-//             </Route>
-//             <Route   exact path='/people'>
-//               <People data={people}/>
-//             </Route>
-//             <Route  exact path='/planets'>
-//               <Planets  data={planets}/>
-//             </Route>
-//             <Route  exact path='/starships'>
-//               <Starships  data={starships}/>
-//             </Route>
-//             </Switch>
-//              )}  
-//         </Container> 
-//       </Router>
-      
-//       {/* <Search getQuery={queryFunction} />
-     
-    
-      
-    
-//   </>);
-// };
-
-// export default App;

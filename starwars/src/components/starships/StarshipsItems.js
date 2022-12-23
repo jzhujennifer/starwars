@@ -23,12 +23,7 @@ const StarshipsItems = ({ item }) => {
               <li>
                 <strong>Length:</strong> {item.length}
               </li>
-              <li>
-                <strong>Crew:</strong> {item.crew}
-              </li>
-              <li>
-                <strong>"Passengers:</strong> {item.passengers}
-              </li>
+           
             </ul>
           </div>
         </div>

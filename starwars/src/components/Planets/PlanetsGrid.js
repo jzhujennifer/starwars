@@ -1,16 +1,19 @@
 import React from 'react'
-import PlanetsItem from './PlanetsItems'
+import PlanetsItems from './PlanetsItems'
 import Spinner from '../ui/Spinner'
 
 const PlanetsGrid = ({ items, isLoading }) => {
   return isLoading ? (
     <Spinner />
   ) : (
+    <div className='title'>
+        <h1 >Planets</h1>
     <section className='cards'>
       {items.map((item) => (
-        <PlanetsItem key={item.char_id} item={item}></PlanetsItem>
+        <PlanetsItems key={item.char_id} item={item}></PlanetsItems>
       ))}
     </section>
+    </div>
   )
 }
 
